@@ -20,6 +20,10 @@ class Graph {
         return false;
     }
 
+    removePoint(point) {
+        this.points.splice(this.points.indexOf(point), 1);
+    }
+
     addSegment(seg) {
         this.segments.push(seg);
     }
@@ -29,11 +33,15 @@ class Graph {
     }
 
     tryAddSegment(seg) {
-        if (!this.containsSegment(seg)) {
+        if (!this.containsSegment(seg) && !seg.p1.equals(seg.p2)) {
             this.addSegment(seg)
             return true
         }
         return false
+    }
+
+    removeSegment(seg) {
+        this.segments.splice(this.segments.indexOf(seg), 1);
     }
 
     draw(ctx) {
